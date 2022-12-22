@@ -8,7 +8,7 @@ https://dictionaryapi.dev/
 ## ERD
 ![Getting Started](./IMGS/ERDP2.png)
 ## RESTful Routing Chart
-![Getting Started](./IMGS/Restful%20routing%20chart.png
+![Getting Started](./IMGS/Restful%20routing%20chart.png)
 ## Wireframe
 
 ## User Stories
