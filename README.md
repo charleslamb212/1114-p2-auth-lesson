@@ -15,7 +15,7 @@ https://dictionaryapi.dev/
 
 ## RESTful Routing Chart
 
-![Getting Started](./IMGS/rest2.png)
+![Getting Started](./IMGS/rest3.png)
 
 ## Wireframe
 
