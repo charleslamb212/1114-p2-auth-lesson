@@ -77,12 +77,12 @@ router.post('/login', async (req, res) => {
             res.redirect('/users/login?message=' + badCredentialMessage)
         } else {
             // if the user is found and their password matches log them in
-            console.log('loggin user in!')
-             // encrypt the new user's id and convert it to a string
-             const encryptedId = crypto.AES.encrypt(String(newUser.id), process.env.SECRET)
-             const encrypedIdString = encryptedId.toString()
-             //place the encryped id in a cookie
-             res.cookie('userId', encrypedIdString)
+            console.log('logging user in!')
+            // ecrypt the new user's id and convert it to a string
+            const encryptedId = crypto.AES.encrypt(String(user.id), process.env.SECRET)
+            const encryptedIdString = encryptedId.toString()
+            // place the encrypted id in a cookie
+            res.cookie('userId', encryptedIdString)
             res.redirect('/users/profile')
         }
     } catch (err) {

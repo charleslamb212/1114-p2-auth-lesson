@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const cookieParser = require('cookie-parser')
 const db = require('./models')
+const axios = require('axios')
 const crypto = require('crypto-js')
 
 // app config
@@ -54,13 +55,27 @@ app.use((req, res, next) => {
 })
 
 // routes and controllers
-app.get('/', (req, res) => {
-    console.log(res.locals.user)
-    res.render('home.ejs', {
-        user: res.locals.user
-    })
+// app.get('/', (req, res) => {
+//     console.log(res.locals.user)
+//     res.render('home.ejs', {
+//         user: res.locals.user
+//     })
+// })
+// GET Definition on to home page from search bar on NAV
+app.get('/', async(req,res) => {
+    try {
+        const url = `https://api.dictionaryapi.dev/api/v2/entries/en/<word>${req.params.word}`
+        console.log(url);
+        const response = await axios.get(url)
+        res.render('/', {
+            word: response.data.search,
+            Definition: req.params.word
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500).send('api error')
+    }
 })
-
 app.use('/users', require('./controllers/users'))
 
 // listen on a port
