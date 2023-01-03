@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser')
 const db = require('./models')
 const axios = require('axios')
 const crypto = require('crypto-js')
+const router = express.Router()
 
 // app config
 const app = express()
@@ -64,18 +65,43 @@ app.use((req, res, next) => {
 // GET Definition on to home page from search bar on NAV
 app.get('/', async(req,res) => {
     try {
-        const url = `https://api.dictionaryapi.dev/api/v2/entries/en/<word>${req.params.word}`
+        let name = req.query.search
+        const url = `https://api.dictionaryapi.dev/api/v2/entries/en/${name}`
         console.log(url);
-        const response = await axios.get(url)
-        res.render('/', {
-            word: response.data.search,
-            Definition: req.params.word
+        const response = await axios.get(url);
+        // const data = { definitions, definition }
+        // console.log(definition);
+        res.render('home.ejs', {
+            user: res.locals.user,
+            results: response.data,
+            
         })
+        // res.render('home.ejs', {
+        //     name: response.data
+        // })
     } catch (error) {
         console.log(error)
         res.status(500).send('api error')
     }
 })
+// // POST /users/:id/favorites - receive the name of a drink and add it to the database
+// app.post('/users/favorites', async (req, res) => {
+//     // TODO: Get form data and add a new record to DB
+//     try {
+//       // create a new fave in the db
+//       await db.favorite.findOrCreate({
+//         where: {
+//           word: req.body.word,
+//           definition: req.body.definition
+          
+//         }
+//       })
+//       // redirect to /faves to show the user their faves
+//     } catch (err) {
+//       console.log(err)
+//     } 
+//     res.redirect('/favorites')
+// })
 app.use('/users', require('./controllers/users'))
 
 // listen on a port

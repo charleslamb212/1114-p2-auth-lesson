@@ -1,0 +1,13 @@
+<!-- favorites page -->
+<div class="container">
+    <h1 class="text-center">Favorites Page</h1>
+    <p class="text-center">
+      <a href="/">Back to Homepage</a>
+    </p>
+    <% faveWords.forEach(function(faveWord) { %>
+      <div class="well">
+          <h2><%= faveWord.word %></h2>
+          <p><%= faveWord.definition %></p>
+      </div>    
+    <% }); %>
+    

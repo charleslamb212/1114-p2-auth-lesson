@@ -1,5 +1,33 @@
 <%- include('partials/header.ejs', { user }) %> 
 
 <h2>Welcome Home, user</h2>
+<% results.forEach(function(result, index) { %>
+    <%if(index===0) { %>
+
+        <div class="well">
+            <h2><%= result.word %></h2>
+            <h2><%= result.phonetic %></h2>
+            <ul>
+            <% result.meanings[0].definitions.forEach(d => { %> 
+              <li><%= d.definition%></li>      
+                   
+            <%})%>
+            </ul>
+            <ul>
+            <% result.meanings[0].synonyms.forEach(s => { %> 
+              <li><%= s%></li>      
+                   
+            <%})%>
+            </ul>
+            <form method="POST" action="/users/favorites">
+              <input hidden type="text" name="word" value="<%= result.word %>">
+              <input hidden type="text" name="definition" value="<%= result.meanings[0].definitions[0].definition %>"> 
+               
+              <button class="btn btn-primary" type="submit">Add to Favorites</button>
+            </form>
+          </div>  
+    <%}%>
+<%})%>
 
 <%- include('partials/footer.ejs') %>
+

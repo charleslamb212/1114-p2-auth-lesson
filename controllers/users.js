@@ -4,6 +4,7 @@ const db = require('../models')
 const router = express.Router()
 const crypto = require('crypto-js')
 const bcrypt = require('bcrypt')
+
 // mount our routes on the router
 
 // GET /users/new -- serves a form to create a new user
@@ -21,32 +22,30 @@ router.post('/', async (req, res) => {
             where: {
                 email: req.body.email
             }
-            // TODO: don't add plaintext passwords to the db
-            
         }) 
-        //if the user is found redirect user to login
+        // if the user is found, redirect user to login
         if (!created) {
-            console.log('user exists!');
+            console.log('user exists!')
             res.redirect('/users/login?message=Please log in to continue.')
         } else {
-            //here we know its a new user
+            // here we know its a new user
             // hash the supplied password
             const hashedPassword = bcrypt.hashSync(req.body.password, 12)
-            //save the user with the new password
+            // save the user with the new password
             newUser.password = hashedPassword
-            await newUser.save() //actually save the new pw in the db
-            // encrypt the new user's id and convert it to a string
+            await newUser.save() // actually save the new password in th db
+            // ecrypt the new user's id and convert it to a string
             const encryptedId = crypto.AES.encrypt(String(newUser.id), process.env.SECRET)
-            const encrypedIdString = encryptedId.toString()
-            //place the encryped id in a cookie
-            res.cookie('userId', encrypedIdString)
+            const encryptedIdString = encryptedId.toString()
+            // place the encrypted id in a cookie
+            res.cookie('userId', encryptedIdString)
             // redirect to user's profile
             res.redirect('/users/profile')
         }
-        
+
     } catch (err) {
         console.log(err)
-        res.status(500).send('server error')
+        res.status(500).send('server error2')
     }
 })
 
@@ -87,7 +86,7 @@ router.post('/login', async (req, res) => {
         }
     } catch (err) {
         console.log(err)
-        res.status(500).send('server error')
+        res.status(500).send('server error 1')
     }
 })
 
@@ -111,5 +110,58 @@ router.get('/profile', (req, res) => {
     }
 })
 
+
+// POST user favorites - CREATE receive the word and save it to the favorites database
+// router.post('/favorites', async (req,res) => {
+//     try {
+//         await db.favorite.findOrCreate({
+//             where: {
+//                 word: req.body.word,
+//                 definition: req.body.definition
+//             }
+//             // console.log(word)
+//         })
+//         res.redirect(req.get('referer'))
+        
+//     } catch (error) {
+//         console.log(error)
+//         res.status(500).send('server error🤯')
+//     }
+// })
+// POST /users/:id/favorites - receive the name of a drink and add it to the database
+router.post('/favorites', async (req, res) => {
+    // TODO: Get form data and add a new record to DB
+    try {
+      // create a new fave in the db
+      await db.favorite.findOrCreate({
+        where: {
+          word: req.body.word,
+          definition: req.body.definition
+          
+        }
+      })
+      // redirect to /faves to show the user their faves
+    } catch (err) {
+      console.log(err)
+    } 
+    res.redirect(req.get('referer'))
+})
+
+
+
+// //GET user/favorites - READ print a page with favorite words
+router.get('/favorites', async(req,res)=> {
+    try {
+        // function to find all favorite words
+        const faveWords = await db.favorite.findAll()
+        res.render('./users/favorites.ejs', {
+            faveWords: faveWords
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(500).send('server error😤')
+    }
+    res.redirect('/favorites')
+})
 // export the router
 module.exports = router

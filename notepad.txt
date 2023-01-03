@@ -1,0 +1,13 @@
+sequelize model:create --name favorite --attributes userId:integer,word:string,definition:string
+sequelize model:create --name comment --attributes 
+
+
+
+
+<input hidden type="text" name="word" value="<%= result.word %>">
+              <input hidden type="text" name="definition" value="<% <ul> %>
+                <% result.meanings[0].definitions.forEach(d => { %> 
+                  <li><%= d.definition%></li>      
+                       
+                <%})%>
+                <% </ul> %>">
