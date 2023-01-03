@@ -76,9 +76,7 @@ app.get('/', async(req,res) => {
             results: response.data,
             
         })
-        // res.render('home.ejs', {
-        //     name: response.data
-        // })
+        
     } catch (error) {
         console.log(error)
         res.status(500).send('api error')

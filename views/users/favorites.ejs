@@ -1,3 +1,4 @@
+<%- include('../partials/header.ejs', { user }) %> 
 <!-- favorites page -->
 <div class="container">
     <h1 class="text-center">Favorites Page</h1>
@@ -8,6 +9,13 @@
       <div class="well">
           <h2><%= faveWord.word %></h2>
           <p><%= faveWord.definition %></p>
-      </div>    
+
+          <form method="POST" action="/users/favorites/<%= faveWord.id %>/?_method=DELETE">
+            <button class="btn btn-primary" style= "color: lightseagreen;" type="submit">Delete From Favorites</button>
+          </form>
+      </div> 
+  </div>       
     <% }); %>
+
+    <%- include('../partials/footer.ejs') %>
     

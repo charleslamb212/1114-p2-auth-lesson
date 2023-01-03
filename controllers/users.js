@@ -144,7 +144,7 @@ router.post('/favorites', async (req, res) => {
     } catch (err) {
       console.log(err)
     } 
-    res.redirect(req.get('referer'))
+    res.redirect('/users/favorites')
 })
 
 
@@ -161,7 +161,24 @@ router.get('/favorites', async(req,res)=> {
         console.log(error)
         res.status(500).send('server error😤')
     }
-    res.redirect('/favorites')
+    
+})
+
+//DELETE user favorites
+router.post('/favorites/:id', async (req,res)=>{
+    try {
+        //remove word 
+        const deleteFave = await db.favorite.destroy({
+            where: {
+                id:req.params.id
+            },
+        })
+        res.redirect(req.get('referer'))
+    } catch (error) {
+        console.log(error.message);
+        res.status(500).send('server error :(')
+        
+    }
 })
 // export the router
 module.exports = router
