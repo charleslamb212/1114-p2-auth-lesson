@@ -24,12 +24,12 @@ const db = require('./models')
 // createFave()
 
 
-const db = require('./models')
+
 
 db.comment.create({
-  name: 'Paul Allen',
-  content: 'This is really neat! Thanks for posting.',
-  articleId: 1
+  userId: '5',
+  comment: 'This is really neat! Thanks for posting.',
+  favoriteId: 1
 })
 .then(comment => {
   console.log(comment.get())
@@ -39,9 +39,9 @@ db.comment.create({
 const createComment = async () => {
   try {
     const newComment = await db.comment.create({
-      name: 'Ada Lovelace',
-      content: 'So excited for this!',
-      articleId: 2
+      userId: '8',
+      comment: 'rat thirty',
+      favoriteId: 20
     })
     console.log(newComment)
   } catch (err) {
@@ -50,3 +50,18 @@ const createComment = async () => {
 }
 
 createComment()
+
+
+// const readComment = async () => {
+//     try {
+//       const oneFav = await db.favorite.findOne({
+//         where: { id: 2},
+//         include: [db.comment]
+//       })
+//       console.log(oneFav.comments)
+//     } catch (err) {
+//       console.log(err)
+//     }
+//   }
+  
+//   readComment()

@@ -149,11 +149,13 @@ router.post('/favorites', async (req, res) => {
 
 
 
-// //GET user/favorites - READ print a page with favorite words
+// //GET user/favorites - READ render a page with favorite words
 router.get('/favorites', async(req,res)=> {
     try {
         // function to find all favorite words
-        const faveWords = await db.favorite.findAll()
+        const faveWords = await db.favorite.findAll({
+            include: [db.comment]
+        })
         res.render('./users/favorites.ejs', {
             faveWords: faveWords
         })
@@ -180,5 +182,22 @@ router.post('/favorites/:id', async (req,res)=>{
         
     }
 })
+
+router.post('/favorites/:id/comment', async (req,res)=>{
+    try {
+        // add comment via button
+      const newComment = await db.comment.create({
+        userId: req.cookies.name,
+        comment: req.body.comment,
+        favoriteId: req.params.id
+      })
+      //console.log(newComment)
+      res.redirect('/users/favorites')
+    } catch (err) {
+      console.log(err)
+    }
+})  
+  
+ 
 // export the router
 module.exports = router

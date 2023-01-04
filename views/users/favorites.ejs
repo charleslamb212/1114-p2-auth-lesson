@@ -1,6 +1,6 @@
 <%- include('../partials/header.ejs', { user }) %> 
 <!-- favorites page -->
-<div class="container">
+
     <h1 class="text-center">Favorites Page</h1>
     <p class="text-center">
       <a href="/">Back to Homepage</a>
@@ -8,13 +8,28 @@
     <% faveWords.forEach(function(faveWord) { %>
       <div class="well">
           <h2><%= faveWord.word %></h2>
-          <p><%= faveWord.definition %></p>
+          <!-- <p><%= faveWord.definition %></p>  -->
+
+          <form class="form-group" action="/users/favorites/<%=faveWord.id%>/comment" method="POST">
+            
+  
+              <label for="userId">User id <i class="fa-solid fa-hashtag"></i></label>
+              <input id="userId" type="text" name="userId" placeholder="ID"/>
+  
+              <label for="comment">Comment:</label>
+              <input id="comment" type="text" name="comment" placeholder="Add comment here"/>
+              <button class="btn btn-primary" style= "background-color: #ee7550;" type="submit">Submit <i class="fa-solid fa-paper-plane"></i></button>
+          </form>    
+          <%faveWord.comments.forEach(function(comment){%>
+            <h3>Comments <i class="fa-regular fa-comment"></i></h3>
+            <p><%=comment.comment%></p>
+             <%})%> 
 
           <form method="POST" action="/users/favorites/<%= faveWord.id %>/?_method=DELETE">
-            <button class="btn btn-primary" style= "color: lightseagreen;" type="submit">Delete From Favorites</button>
+            <button class="btn btn-primary" style= "background-color: #ee7550;" type="submit">Delete <i class="fa-solid fa-trash-can"></i></button>
           </form>
       </div> 
-  </div>       
+        
     <% }); %>
 
     <%- include('../partials/footer.ejs') %>
