@@ -132,6 +132,8 @@ router.get('/profile', (req, res) => {
 router.post('/favorites', async (req, res) => {
     // TODO: Get form data and add a new record to DB
     try {
+        if(req.cookies.userId){
+
       // create a new fave in the db
       await db.favorite.findOrCreate({
         where: {
@@ -139,12 +141,16 @@ router.post('/favorites', async (req, res) => {
           definition: req.body.definition
           
         }
+
       })
+      res.redirect('/users/favorites')
       // redirect to /faves to show the user their faves
+    }else {res.redirect('/users/login')}
     } catch (err) {
       console.log(err)
+      res.send(error)
     } 
-    res.redirect('/users/favorites')
+    
 })
 
 
@@ -197,7 +203,15 @@ router.post('/favorites/:id/comment', async (req,res)=>{
       console.log(err)
     }
 })  
-  
+
+// router.put('users/favorites', async (req,res)=>{
+//     try {
+//         const findComment = await db.activity.findByPK(req.body.commentId)
+//         await findComment.update({comment:`${req.body.updatedComment}`})
+//     } catch (error) {
+//         res.send(error)
+//     }
+// })
  
 // export the router
 module.exports = router

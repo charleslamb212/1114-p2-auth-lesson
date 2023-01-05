@@ -13,6 +13,7 @@ const PORT = process.env.PORT || 8000
 app.set('view engine', 'ejs')
 // parse request bodies from html forms
 app.use(express.urlencoded({ extended: false }))
+app.use(express.static('public'))
 // tell express to parse incoming cookies
 app.use(cookieParser())
 

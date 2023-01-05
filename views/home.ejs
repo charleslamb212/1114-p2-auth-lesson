@@ -25,6 +25,7 @@
             <%})%>
             </ul>
             <%}%>
+           
             <form method="POST" action="/users/favorites">
               <input hidden type="text" name="word" value="<%= result.word %>">
               <input hidden type="text" name="definition" value="<%= result.meanings[0].definitions[0].definition %>"> 
