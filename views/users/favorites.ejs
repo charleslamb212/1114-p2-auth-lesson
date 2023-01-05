@@ -3,7 +3,7 @@
 
     <h1 class="text-center">Favorites Page</h1>
     <p class="text-center">
-      <a href="/">Back to Homepage</a>
+      <button class="btn btn-outline-light" ><a href="/" class="text-decoration-none" >Back to Homepage</a></button>
     </p>
     <% faveWords.forEach(function(faveWord) { %>
       <div class="well">
@@ -18,7 +18,7 @@
   
               <label for="comment">Comment:</label>
               <input id="comment" type="text" name="comment" placeholder="Add comment here"/>
-              <button class="btn btn-primary" style= "background-color: #ee7550;" type="submit">Submit <i class="fa-solid fa-paper-plane"></i></button>
+              <button class="btn btn-outline-light" type="submit">Submit <i class="fa-solid fa-paper-plane"></i></button>
           </form>    
           <%faveWord.comments.forEach(function(comment){%>
             <h3>Comments <i class="fa-regular fa-comment"></i></h3>
@@ -26,7 +26,7 @@
              <%})%> 
 
           <form method="POST" action="/users/favorites/<%= faveWord.id %>/?_method=DELETE">
-            <button class="btn btn-primary" style= "background-color: #ee7550;" type="submit">Delete <i class="fa-solid fa-trash-can"></i></button>
+            <button class="btn btn-outline-light"  type="submit">Delete <i class="fa-solid fa-trash-can"></i></button>
           </form>
       </div> 
         

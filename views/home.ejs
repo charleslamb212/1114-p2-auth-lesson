@@ -8,15 +8,16 @@
         <div class="well">
           <% if (result.word&&result.word!=='undefined') {%>
             <h2 class="display-1"><%= result.word %></h2>
-            
+            <p class="lead">Phonetic pronunciation</p>
             <h2 class="lead"><%= result.phonetic %></h2>
+            <p class="lead">Meanings</p>
             <ul>
             <% result.meanings[0].definitions.forEach(d => { %> 
               <li><%= d.definition%></li>      
                    
             <%})%>
             </ul>
-
+            <p class="lead">Synonyms</p>
             <ul>
             <% result.meanings[0].synonyms.forEach(s => { %> 
               <li><%= s%></li>      
@@ -28,7 +29,7 @@
               <input hidden type="text" name="word" value="<%= result.word %>">
               <input hidden type="text" name="definition" value="<%= result.meanings[0].definitions[0].definition %>"> 
                
-              <button class="btn btn-primary" style="background-color: #ee7550;" type="submit">Add to Favorites</button>
+              <button class="btn btn-outline-light"  type="submit">Add to Favorites</button>
             </form>
           </div>  
     <%}%>
