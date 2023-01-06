@@ -6,6 +6,7 @@ const db = require('./models')
 const axios = require('axios')
 const crypto = require('crypto-js')
 const router = express.Router()
+const methodOverride = require('method-override')
 
 // app config
 const app = express()
@@ -14,6 +15,7 @@ app.set('view engine', 'ejs')
 // parse request bodies from html forms
 app.use(express.urlencoded({ extended: false }))
 app.use(express.static('public'))
+app.use(methodOverride('_method'))
 // tell express to parse incoming cookies
 app.use(cookieParser())
 
@@ -80,7 +82,10 @@ app.get('/', async(req,res) => {
         
     } catch (error) {
         console.log(error)
-        res.status(500).send('api error')
+        res.render('home.ejs', {
+            user: res.locals.user,
+            results: []
+        })
     }
 })
 // // POST /users/:id/favorites - receive the name of a drink and add it to the database

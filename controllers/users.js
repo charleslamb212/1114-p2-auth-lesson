@@ -173,7 +173,7 @@ router.get('/favorites', async(req,res)=> {
 })
 
 //DELETE user favorites
-router.post('/favorites/:id', async (req,res)=>{
+router.delete('/favorites/:id', async (req,res)=>{
     try {
         //remove word 
         const deleteFave = await db.favorite.destroy({
@@ -203,15 +203,21 @@ router.post('/favorites/:id/comment', async (req,res)=>{
       console.log(err)
     }
 })  
+//UPDATE USER ID
 
-// router.put('users/favorites', async (req,res)=>{
-//     try {
-//         const findComment = await db.activity.findByPK(req.body.commentId)
-//         await findComment.update({comment:`${req.body.updatedComment}`})
-//     } catch (error) {
-//         res.send(error)
-//     }
-// })
- 
+router.put('/:id', async (req,res)=>{
+    try {
+        const passwordChange = await db.user.update({
+             password: bcrypt.hashSync(req.body.password, 12) }, 
+             {where: {
+                email:'req.body.email'
+             }
+         })              
+    res.redirect('/')  
+    } catch (error) {
+        console.log(error)
+        res.send(error)
+    }
+}) 
 // export the router
 module.exports = router
