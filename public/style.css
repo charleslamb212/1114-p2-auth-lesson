@@ -1,5 +1,6 @@
 body {
     font-family: 'Goldman', cursive !important;
-
-    
+    background-image: url('Depositphotos_223472094_S.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
   }

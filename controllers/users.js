@@ -138,8 +138,8 @@ router.post('/favorites', async (req, res) => {
       await db.favorite.findOrCreate({
         where: {
           word: req.body.word,
-          definition: req.body.definition
-          
+          definition: req.body.definition,
+          //userId: res.locals.user.id
         }
 
       })
@@ -160,6 +160,9 @@ router.get('/favorites', async(req,res)=> {
     try {
         // function to find all favorite words
         const faveWords = await db.favorite.findAll({
+            // where: {
+            //     userId: res.locals.user.id
+            // },
             include: [db.comment]
         })
         res.render('./users/favorites.ejs', {
