@@ -112,3 +112,4 @@ app.use('/users', require('./controllers/users'))
 app.listen(PORT, () => {
     console.log(`authenticating users on PORT ${PORT} 🔐`)
 })
+
