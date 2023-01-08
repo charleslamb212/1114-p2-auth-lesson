@@ -1,6 +1,29 @@
 body {
     font-family: 'Goldman', cursive !important;
-    background-image: url('Depositphotos_223472094_S.jpg');
+    background-image: url('yeshi-kangrang-wTD1-_u8x1g-unsplash.jpg');
+    color:lime !important;
     background-size: cover;
     background-repeat: no-repeat;
+  }
+  span.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0, 255, 0, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");   
+  }
+  .navbar-light .navbar-toggler {
+    border: 1px solid lime;
+  }
+
+  /* .custom-toggler .navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,102,203, 0.5)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+  }
+  
+  .custom-toggler.navbar-toggler {
+    border-color: rgb(255,102,203);
+  }  */
+
+  h1 {
+    color: lime;
+  }
+
+  h2 {
+    color: lime;
   }
