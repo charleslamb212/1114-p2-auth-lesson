@@ -30,6 +30,7 @@ https://dictionaryapi.dev/
 Make sure node_modules and .env are in the gitignore file before committing to remote repository
 - Run sequelize db:create to create the database in psql
 - Run sequelize db:migrate to migrate the models
+
 ## Tech Used
 
 - Javascript
@@ -45,7 +46,6 @@ Make sure node_modules and .env are in the gitignore file before committing to r
 - Crypto-JS
 - Dotenv
 - EJS
-- Method-Override
 - Bootstrap
 - Font Awesome
 
