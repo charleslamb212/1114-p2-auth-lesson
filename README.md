@@ -22,6 +22,14 @@ https://dictionaryapi.dev/
 ![Getting Started](./IMGS/p2home.png)
 ![Getting Started](./IMGS/p2favs.png)
 
+## Installation Instruction
+- Fork and Clone repo to your local repository
+- Run npm init -y to initialize npm
+- Open the repo and navigate to package.json file and see a list of npm       packages listed under dependencies
+- Run npm install or npm i in the terminal to download of all required npm packages. node_modules should appear in the folder.
+Make sure node_modules and .env are in the gitignore file before committing to remote repository
+- Run sequelize db:create to create the database in psql
+- Run sequelize db:migrate to migrate the models
 ## Tech Used
 
 - Javascript
@@ -40,6 +48,7 @@ https://dictionaryapi.dev/
 - Method-Override
 - Bootstrap
 - Font Awesome
+
 ## User Stories
 
 - As a user, i want to view all information and context around my word search.
@@ -58,5 +67,5 @@ https://dictionaryapi.dev/
 - Site displays a word of the day.
 
 ## Post Project Reflection
-- WHat i learned from this project that
+- My key takeaway from this project is to be organized.  This is an area i see opportunity for growth in.  The approach i took was to keep the routes in one place, controllers/users in my file structure.  In hindsight i realize they should all be kept in their respective foldersand the url path would change.  ANother key takeaway is to be focused when analyzing what JSON data you want to feed your page from the api.  I overlooked an indented bracketand needed help to get the info loop renderingon my page - but in that learned a valuable lesson.  This is also possiby the last time i use bootstrap as their default classes have css built in and are very hard to override.  Had to jump through some hoops to make it look non bootstrappy.
   

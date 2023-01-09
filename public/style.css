@@ -12,8 +12,8 @@ body {
   .navbar-light .navbar-toggler {
     border: 3px solid lime;
   }
-  .form-control me-2 {
-
+  .form-control {
+    color: lime !important;
   }
   h1 {
     color: lime;
@@ -24,6 +24,6 @@ body {
   }
 
   .btn btn-outline-light {
-    background-color: rgb(0,255,0); 
+    color: rgb(0,255,0); 
   } 
  
