@@ -22,6 +22,24 @@ https://dictionaryapi.dev/
 ![Getting Started](./IMGS/p2home.png)
 ![Getting Started](./IMGS/p2favs.png)
 
+## Tech Used
+
+- Javascript
+- CSS
+- HTML
+- Node
+- Axios
+- Postgresql
+- Sequelize
+- Express
+- Bcrypt
+- Cookie-Parser
+- Crypto-JS
+- Dotenv
+- EJS
+- Method-Override
+- Bootstrap
+- Font Awesome
 ## User Stories
 
 - As a user, i want to view all information and context around my word search.
@@ -38,3 +56,7 @@ https://dictionaryapi.dev/
 ## Stretch Goals
 
 - Site displays a word of the day.
+
+## Post Project Reflection
+- WHat i learned from this project that
+  
