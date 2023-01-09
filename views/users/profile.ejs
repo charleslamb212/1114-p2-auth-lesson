@@ -1,9 +1,9 @@
 <%- include('../partials/header', { user }) %>
 
-<h3>Hello, <%= user.email %> thanks for stopping by to educate yourself!</h3>
+<h3>Hello, <%= user.email %> thanks for stopping by to grow your lexicon!</h3>
 <form method="POST" action="/users/<%=user.id%>/?_method=PUT">
     <label for="email">Email:</label>
-    <input type="email" name="email" id="email" required />
+    <input type="email" name="email" class="form control bg-transparent" id="email" required />
 
     <label for="password">Password:</label>
     <input type="password" class="form control bg-transparent" name="password" id="password" required/>
