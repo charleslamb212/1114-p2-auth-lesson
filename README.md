@@ -9,6 +9,9 @@ A Dictionary app that displays any word as a result of a search.
 https://dictionaryapi.dev/
 ![Getting Started](./IMGS/apisearchresult.png)
 
+## Link to Deployed Site
+https://ject-2-test-deploy.herokuapp.com/
+
 ## ERD
 
 ![Getting Started](./IMGS/ERDP2.png)
