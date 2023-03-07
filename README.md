@@ -1,7 +1,9 @@
-This is a Dictionary app that utilizes an external API (https://dictionaryapi.dev/) to display search results for any given word. The app includes an ERD diagram, RESTful routing chart, and wireframes for the home page and favorites page. The app uses a variety of technologies, including JavaScript, CSS, HTML, Node, Postgresql, and Express, and allows users to add words to a list of favorites, view a favorites page that shows all favorite words and comments on that page, and comment on individual word pages.
+# A full stack dictionary app
+
+This is a Dictionary app that utilizes an external API (https://dictionaryapi.dev/) to display search results for any given word. The app uses a variety of technologies, including JavaScript, CSS, HTML, Node, Postgresql, and Express, and allows users to add words to a list of favorites, view a favorites page that shows all favorite words and comments on that page, and comment on individual word pages.
 
 
-# Project Pitch
+
 
 ## Description:
 
